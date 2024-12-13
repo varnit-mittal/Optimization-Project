@@ -77,4 +77,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-#  python .\run_cmaes.py --cost_function paraboloid --ndim_problem 3 --upper_bound 100 --lower_bound -100 --max_evals 1000 --n_individuals 5 --sigma 0.5
+#  python .\run_cmaes.py --cost_function paraboloid --ndim_problem 5 --upper_bound 100 --lower_bound -100 --max_evals 1000 --n_individuals 5 --sigma 0.5

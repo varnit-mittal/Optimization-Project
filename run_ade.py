@@ -80,5 +80,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
-# python run_ade.py --cost_function paraboloid --ndim_problem 2 --upper_bound 100 --lower_bound -100 --n_individuals 100  --n_mu 0.6 --median 0.4 --p 0.1 --c 0.05 --verbose 100 --max_evals 1000
+# python run_ade.py --cost_function paraboloid --ndim_problem 5 --upper_bound 100 --lower_bound -100 --n_individuals 5  --n_mu 0.6 --median 0.4 --p 0.1 --c 0.05  --max_evals 1000

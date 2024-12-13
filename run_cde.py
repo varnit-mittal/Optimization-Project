@@ -72,4 +72,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-#  python .\run_cde.py --cost_function schwefel --ndim_problem 5 --upper_bound 500 --lower_bound -500 --max_evals 10000 --n_individuals 100 --seed_rng 42 --seed_initialization 42 --seed_optimization 42
+#  python .\run_cde.py --cost_function paraboloid --ndim_problem 5 --upper_bound 500 --lower_bound -500 --max_evals 10000 --n_individuals 15

@@ -125,4 +125,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-# python .\run_ipso.py --cost_function discus --ndim_problem 5 --lower_bound -100 --upper_bound 100 --max_evals 2000  
+# python .\run_ipso.py --cost_function paraboloid --ndim_problem 5 --lower_bound -100 --upper_bound 100 --max_evals 2000 --n_individuals 10
