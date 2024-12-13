@@ -52,7 +52,9 @@ options = {
 def accuracy(x, y):
     x = np.array(x, dtype=np.float64)
     y = np.array(y, dtype=np.float64)
-    return np.linalg.inv(np.array([[(x - y)*(x - y) + np.array(1e-30, dtype=np.float64)]]))[0,0]
+    return np.linalg.inv(
+        np.array([[(x - y) * (x - y) + np.array(1e-30, dtype=np.float64)]])
+    )[0, 0]
 
 
 algorithms = {
@@ -90,15 +92,14 @@ for func_name, func in benchmark_functions.items():
         start = perf_counter_ns()
         res = algorithm.optimize()
         end = perf_counter_ns()
-        runtime = end - start
+        runtime = (end - start) / 1_000_000  
         acc = accuracy(res["y_best"], OPTIMAL_Y)
-        print(acc)
-        results['Algorithm'].append(algorithm_name)
-        results['Benchmark Function'].append(func_name)
-        results['Accuracy'].append(acc)
-        results['Runtime'].append(runtime)
-    
-    
+        results["Algorithm"].append(algorithm_name)
+        results["Benchmark Function"].append(func_name)
+        results["Accuracy"].append(acc)
+        results["Runtime"].append(runtime)
+
+
 results_df = pd.DataFrame(results)
 
 # plt.figure(figsize=(10, 6))
@@ -115,12 +116,12 @@ results_df = pd.DataFrame(results)
 # plt.show()
 
 fig_runtime = px.line(
-    results_df, 
-    x='Algorithm', 
-    y='Runtime', 
-    color='Benchmark Function', 
+    results_df,
+    x="Algorithm",
+    y="Runtime",
+    color="Benchmark Function",
     title="Runtime Comparison of Algorithms",
-    labels={"Runtime": "Runtime (ns)", "Algorithm": "Algorithm"}, 
+    labels={"Runtime": "Runtime (ms)", "Algorithm": "Algorithm"},
 )
 fig_runtime.update_xaxes(tickangle=45)
 fig_runtime.show()
