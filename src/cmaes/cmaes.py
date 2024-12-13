@@ -7,17 +7,13 @@ class CMAES(Optimizer):
         if self.n_individuals is None:
             self.n_individuals = 4 + int(3*np.log(self.ndim_problem))
         assert self.n_individuals >= 2
-        
         self.n_parents = options.get('n_parents', int(self.n_individuals/2))
         assert self.n_parents <= self.n_individuals and self.n_parents > 0
         
         self.mean = options.get('mean', options.get('x'))
         self.sigma = options.get('sigma')
         assert self.sigma > 0
-        
-        self.lr_mean = options.get('lr_mean')
-        self.lr_sigma = options.get('lr_sigma')
-        
+                
         self._e_chi = np.sqrt(self.ndim_problem)*(1.0 - 1.0/(4.0*self.ndim_problem) + 
                                                  1.0/(21.0*np.square(self.ndim_problem)))
         

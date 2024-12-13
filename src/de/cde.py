@@ -7,8 +7,8 @@ class CDE(Optimizer):
         if self.n_individuals is None:
             self.n_individuals = 100
         assert self.n_individuals > 0
-        self.mu = options.get('mu', 0.5)
-        self.cr = options.get('cr', 0.9)
+        self.mu = options.get('mu', 0.5) # Mutation Scaling Factor
+        self.cr = options.get('cr', 0.9) # Crossover Probability
         self.n_gens = 0
 
     def initialize(self, args=None):
