@@ -1,4 +1,5 @@
 from turtle import color
+import plotly.express as px
 from matplotlib import pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -106,9 +107,20 @@ results_df = pd.DataFrame(results)
 # plt.xticks(rotation=45)
 # plt.show()
 
-# Plot runtime vs algorithm (box plot)
-plt.figure(figsize=(10, 6))
-sns.scatterplot(x='Algorithm', y='Runtime', data=results_df,hue='Benchmark Function')
-plt.title('Runtime Comparison of Algorithms')
-plt.xticks(rotation=45)
-plt.show()
+# Plot runtime vs algorithm (line plot)
+# plt.figure(figsize=(10, 6))
+# sns.lineplot(x='Algorithm', y='Runtime', data=results_df,hue='Benchmark Function')
+# plt.title('Runtime Comparison of Algorithms')
+# plt.xticks(rotation=45)
+# plt.show()
+
+fig_runtime = px.line(
+    results_df, 
+    x='Algorithm', 
+    y='Runtime', 
+    color='Benchmark Function', 
+    title="Runtime Comparison of Algorithms",
+    labels={"Runtime": "Runtime (ns)", "Algorithm": "Algorithm"}, 
+)
+fig_runtime.update_xaxes(tickangle=45)
+fig_runtime.show()
