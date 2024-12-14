@@ -145,17 +145,25 @@ To run the ADE implementation, use the `run_ade.py` script with the following ar
 - `--n_mu`: Mean of normal distribution for crossover (**default**: 0.5).  
 - `--median`: Location of the Cauchy distribution for mutation (**default**: 0.5).  
 - `--p`: Greediness parameter for selection (**default**: 0.05).  
-- `--c`: Adaptation rate for parameters (**default**: 0.1).  
+- `--c`: Adaptation rate for parameters (**default**: 0.1).
+
+To know the arguments for a particular script file, you can use the `--help` flag. A list of arguments with their descriptions will be shown.
 
 #### Example Usage
 
 ```bash
-    python run_ade.py --cost_function paraboloid --ndim_problem 5 --upper_bound 100 --lower_bound -100 --n_individuals 5  --n_mu 0.6 --median 0.4 --p 0.1 --c 0.05  --max_evals 1000
+    python3 run_ade.py --cost_function paraboloid --ndim_problem 5 --upper_bound 100 --lower_bound -100 --n_individuals 5  --n_mu 0.6 --median 0.4 --p 0.1 --c 0.05  --max_evals 1000 --verbose 10
 ```
+
+```bash
+    python3 run_ade.py --help
+```
+
+You can run the other files similarly.
 
 ### Test your own benchmark function
 
-- Just add the function definition to `src/core/benchmarks.py` and use it while running the evolutionary algorithm.
+- Just add the function definition to `src/core/benchmarks.py` and use it while running the algorithms.
 
 ## References
 
