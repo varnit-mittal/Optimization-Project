@@ -1,3 +1,4 @@
+import copy
 from turtle import color
 import plotly.express as px
 from matplotlib import pyplot as plt
@@ -16,35 +17,37 @@ LOWER_BOUND = -100
 UPPER_BOUND = 100
 NDIM_PROBLEM = 5
 OPTIMAL_Y = 0
+EPSILON = 1e-3
+N_INDIVIDUALS = 100
 
 options = {
     "cmaes": {
-        "max_evals": 5000,
-        "n_individuals": 5,
+        "max_evals": 10000,
+        "n_individuals": N_INDIVIDUALS,
         "mean": np.array(0),
         "sigma": 0.5,
     },
     "fcmaes": {
-        "max_evals": 5000,
-        "n_individuals": 5,
+        "max_evals": 10000,
+        "n_individuals": N_INDIVIDUALS,
         "mean": np.array(0),
         "sigma": 0.5,
     },
     "ade": {
-        "max_evals": 5000,
-        "n_individuals": 5,
+        "max_evals": 10000,
+        "n_individuals": N_INDIVIDUALS,
     },
     "cde": {
-        "max_evals": 5000,
-        "n_individuals": 5,
+        "max_evals": 10000,
+        "n_individuals": N_INDIVIDUALS,
     },
     "ipso": {
-        "max_evals": 5000,
-        "n_individuals": 5,
+        "max_evals": 10000,
+        "n_individuals": N_INDIVIDUALS,
     },
     "spso": {
-        "max_evals": 5000,
-        "n_individuals": 5,
+        "max_evals": 10000,
+        "n_individuals": N_INDIVIDUALS,
     },
 }
 
@@ -52,9 +55,7 @@ options = {
 def accuracy(x, y):
     x = np.array(x, dtype=np.float64)
     y = np.array(y, dtype=np.float64)
-    return np.linalg.inv(
-        np.array([[(x - y) * (x - y) + np.array(1e-30, dtype=np.float64)]])
-    )[0, 0]
+    return abs(x-y)
 
 
 algorithms = {
@@ -77,6 +78,7 @@ results = {
     "Algorithm": [],
     "Benchmark Function": [],
     "Accuracy": [],
+    # "MinEvals": [],
     "Runtime": [],
 }
 problem = {
@@ -84,6 +86,21 @@ problem = {
     "lower_bound": LOWER_BOUND,
     "upper_bound": UPPER_BOUND,
 }
+# for func_name, func in benchmark_functions.items():
+#     for algorithm_name, algorithm_class in algorithms.items():
+#         algo_options = options[algorithm_name]
+#         problem["cost_function"] = func
+#         algorithm = algorithm_class(problem, algo_options)
+#         start = perf_counter_ns()
+#         res = algorithm.optimize()
+#         end = perf_counter_ns()
+#         runtime = (end - start) / 1_000_000  
+#         acc = accuracy(res["y_best"], OPTIMAL_Y)
+#         results["Algorithm"].append(algorithm_name)
+#         results["Benchmark Function"].append(func_name)
+#         results["Accuracy"].append(acc)
+#         results["Runtime"].append(runtime)
+
 for func_name, func in benchmark_functions.items():
     for algorithm_name, algorithm_class in algorithms.items():
         algo_options = options[algorithm_name]
@@ -93,9 +110,25 @@ for func_name, func in benchmark_functions.items():
         res = algorithm.optimize()
         end = perf_counter_ns()
         runtime = (end - start) / 1_000_000  
-        acc = accuracy(res["y_best"], OPTIMAL_Y)
+        acc = accuracy(res['y_best'],OPTIMAL_Y)
+        # l=1
+        # r=int(2e5)
+        # mxeval=r
+        # algo_options_temp = copy.deepcopy(algo_options)
+        # while l<=r:
+        #     mid = (l+r)//2
+        #     print(mid)
+        #     algo_options_temp['max_evals'] = mid
+        #     algorithm = algorithm_class(problem, algo_options_temp)
+        #     res= algorithm.optimize()
+        #     if accuracy(res['y_best'],OPTIMAL_Y) <=EPSILON:
+        #         r=mid-1
+        #         mxeval =r
+        #     else:
+        #         l=mid+1
         results["Algorithm"].append(algorithm_name)
         results["Benchmark Function"].append(func_name)
+        # results["MinEvals"].append(mxeval)
         results["Accuracy"].append(acc)
         results["Runtime"].append(runtime)
 
@@ -125,3 +158,23 @@ fig_runtime = px.line(
 )
 fig_runtime.update_xaxes(tickangle=45)
 fig_runtime.show()
+
+fig_runtime = px.line(
+    results_df,
+    x="Benchmark Function",
+    y="Accuracy",
+    color="Algorithm",
+    title="Accuracy Comparison of Algorithms",
+    labels={"Accuracy": "|ypred - ytrue|", "Algorithm": "Algorithm"},
+)
+fig_runtime.update_xaxes(tickangle=45)
+fig_runtime.show()
+
+# fig_runtime = px.line(
+#     results_df,
+#     x="Benchmark Function",
+#     y="MinEvals",
+#     color="Algorithm",
+#     title="Minimum Evaluations to get a certain threshold of accuracy",
+#     labels={"MinEvals": "MinEvals", "Algorithm": "Algorithm"},
+# )
