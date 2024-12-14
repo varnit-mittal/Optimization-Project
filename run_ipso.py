@@ -12,7 +12,7 @@ def main():
     parser.add_argument('--upper_bound',type=float,required=True,help="The upper bound of the optimization problem")
     parser.add_argument('--lower_bound',type=float,required=True,help="The lower bound of the optimization problem")
     #options optimizer
-    parser.add_argument('--max_evals',type=int,default=None, help="Maximum number of allowed evaluations (default:infinity)")
+    parser.add_argument('--max_evals',type=int,default=10000, help="Maximum number of allowed evaluations (default:10000)")
     parser.add_argument('--seed_rng',type=int,default=42,help="Random seed for the RNG")
     parser.add_argument('--seed_initialization',type=int,default=42,help="Random seed for initialization")
     parser.add_argument('--seed_optimization',type=int,default=42,help="Random seed for optimization")
@@ -20,7 +20,7 @@ def main():
     parser.add_argument('--n_evals',type=int,default=None,help="Number of currently used evaluations (default:0)")
     parser.add_argument('--y_best', type=float, default=np.inf, help="Best fitness value known (default: np.inf)")
     #options algo
-    parser.add_argument('--n_individuals', type=int, default=1, help="Initial number of individuals in the swarm (default: 1)")
+    parser.add_argument('--n_individuals', type=int, default=10, help="Initial number of individuals in the swarm (default: 1)")
     parser.add_argument('--max_n_individuals', type=int, default=1000, help="Maximum number of individuals in the swarm (default: 1000)")
 
     # Enhanced cognitive and social parameters
