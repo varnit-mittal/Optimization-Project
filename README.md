@@ -118,7 +118,7 @@ Install dependencies
 
 There are 6 run files in the project directory for user's convenience and a comment on how to run the respective evolutionary algorithm is written in each one of them.
 
-### Example: Running Adaptive Differential evolutionary
+### Example: Running Adaptive Differential Evolution
 
 To run the ADE implementation, use the `run_ade.py` script with the following arguments:
 
