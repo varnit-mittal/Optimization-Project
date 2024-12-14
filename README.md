@@ -7,7 +7,7 @@ This project explores **black-box optimization**, a challenging domain where the
 - **Covariance Matrix Adaption Evolution Strategy (CMA-ES)**
 - **Particle Swarm Optimization (PSO)**
 
-In addition to these standard algorithms, we developed and analyzed **enhanced variants** to improve their efficiency and adaptability in solving complex black-box optimization problems.
+In addition to these standard algorithms, we implemented and analyzed **enhanced variants** to improve their efficiency and adaptability in solving complex black-box optimization problems.
 
 ## Motivation
 
@@ -15,7 +15,7 @@ Black-box Optimization is crucial in various fields such as:
 
 - Hyperparameter tuning in Machine Learning 
 - Engineering Design Optimization
-- Financial Modelling
+- Financial Modeling
 
 #### Challenges include:
 
@@ -27,11 +27,7 @@ Evolutionary algorithms are ideal for these scenarios as they rely solely on fun
 
 ## Problem Statement
 
-Given and objective function in **n-dimensional** space with defined upper and lower bounds for all dimensions, and a maximum number of evaluations:
-
-Find the **optimizer** while adhering to the evaluation budget such that:
-
-- it is within the constrainst of the search space
+Given and objective function in **n-dimensional** space with defined upper and lower bounds for all dimensions, and a maximum number of evaluations, find the **optimizer** while adhering to the evaluation budget such that it is within the constraint of the search space.
 
 ## Algorithms Implemented
 
@@ -110,7 +106,7 @@ Go to the project directory
   cd Optimization-Project
 ```
 
-Install dependencies
+Install dependencies (only `numpy` and `scipy` are required)
 
 ```bash
   pip install -r requirements.txt
@@ -136,11 +132,11 @@ To run the ADE implementation, use the `run_ade.py` script with the following ar
 - `--seed_rng`: Random seed for reproducibility (**default**: 42).  
 - `--seed_initialization`: Random seed for initialization (**default**: 42).  
 - `--seed_optimization`: Random seed for optimization (**default**: 42).  
-- `--verbose`: Enable verbose output (**default**: 0).  
+- `--verbose`: Enable verbose output (**default**: 0). Setting this to 10 (for example) will output the best *x* and the best function value every 10 iterations/generations.
 - `--n_evals`: Number of evaluations already used (**default**: 0).  
 - `--y_best`: Best known fitness value (**default**: `np.inf`).  
 
-#### Algorithm-Specific Parameters
+#### Algorithm-Specific Parameters (specific to ADE here)
 
 - `--n_mu`: Mean of normal distribution for crossover (**default**: 0.5).  
 - `--median`: Location of the Cauchy distribution for mutation (**default**: 0.5).  
