@@ -152,7 +152,7 @@ To know the arguments for a particular script file, you can use the `--help` fla
 #### Example Usage
 
 ```bash
-    python3 run_ade.py --cost_function paraboloid --ndim_problem 5 --upper_bound 100 --lower_bound -100 --n_individuals 5  --n_mu 0.6 --median 0.4 --p 0.1 --c 0.05  --max_evals 1000
+    python3 run_ade.py --cost_function paraboloid --ndim_problem 5 --upper_bound 100 --lower_bound -100 --n_individuals 5  --n_mu 0.6 --median 0.4 --p 0.1 --c 0.05  --max_evals 1000 --verbose 10
 ```
 
 ```bash
