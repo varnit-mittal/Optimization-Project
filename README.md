@@ -127,8 +127,8 @@ To run the ADE implementation, use the `run_ade.py` script with the following ar
 
 #### Optimization Options
 
-- `--max_evals`: Maximum number of allowed evaluations (**default**: infinity).  
-- `--n_individuals`: Number of individuals in the population (**default**: None).  
+- `--max_evals`: Maximum number of allowed evaluations (**default**: 10000).  
+- `--n_individuals`: Number of individuals in the population (**default**: 50).  
 - `--seed_rng`: Random seed for reproducibility (**default**: 42).  
 - `--seed_initialization`: Random seed for initialization (**default**: 42).  
 - `--seed_optimization`: Random seed for optimization (**default**: 42).  
@@ -148,11 +148,11 @@ To know the arguments for a particular script file, you can use the `--help` fla
 #### Example Usage
 
 ```bash
-    python3 run_ade.py --cost_function paraboloid --ndim_problem 5 --upper_bound 100 --lower_bound -100 --n_individuals 5  --n_mu 0.6 --median 0.4 --p 0.1 --c 0.05  --max_evals 1000 --verbose 10
+    python3 run_ade.py --help
 ```
 
 ```bash
-    python3 run_ade.py --help
+    python3 run_ade.py --cost_function paraboloid --ndim_problem 5 --upper_bound 100 --lower_bound -100 --n_individuals 5  --n_mu 0.6 --median 0.4 --p 0.1 --c 0.05  --max_evals 1000 --verbose 10
 ```
 
 You can run the other files similarly.
