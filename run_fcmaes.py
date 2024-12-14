@@ -15,7 +15,7 @@ def main():
     parser.add_argument('--lower_bound',type=float,required=True,help="The lower bound of the optimization problem")
     #options optimizer
     parser.add_argument('--max_evals',type=int,default=10000, help="Maximum number of allowed evaluations (default:10000)")
-    parser.add_argument('--n_individuals',type=int,default=50,required=True,help="Number of individuals in the population (default:50)")
+    parser.add_argument('--n_individuals',type=int,default=50,help="Number of individuals in the population (default:50)")
     parser.add_argument('--seed_rng',type=int,default=42,help="Random seed for the RNG")
     parser.add_argument('--seed_initialization',type=int,default=42,help="Random seed for initialization")
     parser.add_argument('--seed_optimization',type=int,default=42,help="Random seed for optimization")
