@@ -117,9 +117,9 @@ results_df = pd.DataFrame(results)
 
 fig_runtime = px.line(
     results_df,
-    x="Algorithm",
+    x="Benchmark Function",
     y="Runtime",
-    color="Benchmark Function",
+    color="Algorithm",
     title="Runtime Comparison of Algorithms",
     labels={"Runtime": "Runtime (ms)", "Algorithm": "Algorithm"},
 )
