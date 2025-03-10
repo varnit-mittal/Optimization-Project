@@ -73,7 +73,7 @@ A swarm-based algorithm inspired by social behaviors. Features include:
 - Position and velocity updates  
 - Personal and global best tracking  
 
-#### Variant: Iterative Particle Swarm Optimization (IPSO)
+#### Variant: Improved Particle Swarm Optimization (IPSO)
 
 **Improvements:**
 
